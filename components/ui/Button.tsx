@@ -1,13 +1,14 @@
 "use client"
 
-import { ButtonHTMLAttributes, forwardRef } from "react"
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onDrag" | "onDragEnd" | "onDragStart"> {
   variant?: "primary" | "secondary" | "luxury" | "ghost"
   size?: "sm" | "md" | "lg"
   glowing?: boolean
+  children?: ReactNode
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(

@@ -137,7 +137,7 @@ export default function SuccessSection() {
 
                 {/* Story */}
                 <p className="text-neutral-silver mb-4 italic">
-                  "{testimonial.story}"
+                  &ldquo;{testimonial.story}&rdquo;
                 </p>
 
                 {/* Profile info */}
@@ -171,8 +171,8 @@ export default function SuccessSection() {
               Our Success Guarantee
             </h3>
             <p className="text-neutral-silver mb-6">
-              If you don't find a meaningful connection within 6 months, 
-              we'll extend your membership for free. That's how confident we are in our platform.
+              If you don&apos;t find a meaningful connection within 6 months, 
+              we&apos;ll extend your membership for free. That&apos;s how confident we are in our platform.
             </p>
             <div className="flex justify-center gap-4">
               <div className="text-center">
