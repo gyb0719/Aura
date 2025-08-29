@@ -15,11 +15,11 @@ export default function Home() {
         <HeroSection />
         <TrustSection />
         <AIShowcaseSection />
-        {/* <MembershipSection />
+        <MembershipSection />
         <SuccessSection />
-        <EventsSection /> */}
+        <EventsSection />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }
