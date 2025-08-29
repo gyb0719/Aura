@@ -13,9 +13,9 @@ export default function Home() {
       <Navigation />
       <main className="relative">
         <HeroSection />
-        {/* <TrustSection />
+        <TrustSection />
         <AIShowcaseSection />
-        <MembershipSection />
+        {/* <MembershipSection />
         <SuccessSection />
         <EventsSection /> */}
       </main>
