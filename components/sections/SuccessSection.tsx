@@ -52,10 +52,10 @@ export default function SuccessSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
             실제 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">성공 스토리</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-4">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             완벽한 인연을 찾은 수천 명의 회원들과 함께하세요
           </p>
         </motion.div>
@@ -140,10 +140,10 @@ export default function SuccessSection() {
         >
           <Card className="max-w-2xl mx-auto p-8">
             <Heart className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               성공 보장 프로그램
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 mb-8 mt-2">
               6개월 내에 의미 있는 인연을 찾지 못하신다면, 
               무료로 멤버십을 연장해 드립니다. 저희 플랫폼에 대한 자신감입니다.
             </p>

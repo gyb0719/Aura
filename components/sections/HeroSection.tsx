@@ -30,7 +30,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50" />
       <div className="absolute inset-0 bg-pattern-dots opacity-5" />
       <div className="container mx-auto px-6 lg:px-12 py-32 relative z-10">
-        <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
+        <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center">
           {/* Main headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -50,7 +50,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-            className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-20 max-w-3xl mx-auto leading-relaxed text-center"
+            className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed text-center"
           >
             AI가 분석하는 성향 매칭으로 진정한 인연을 찾아드립니다.
             검증된 프리미엄 회원들과 함께하세요.
