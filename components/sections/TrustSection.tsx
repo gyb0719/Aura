@@ -2,55 +2,43 @@
 
 import { motion } from "framer-motion"
 import { Shield, Award, Globe, Lock, CheckCircle, Users } from "lucide-react"
-import GlassCard from "@/components/ui/GlassCard"
+import Card from "@/components/ui/Card"
 
 const trustItems = [
   {
     icon: Shield,
-    title: "Verified Profiles",
-    description: "Multi-layer verification including ID, employment, and social media",
+    title: "100% 인증 프로필",
+    description: "신분증, 직장, SNS까지 다단계 검증 시스템",
     stat: "100%",
-    statLabel: "Verified"
+    statLabel: "검증 완료"
   },
   {
     icon: Lock,
-    title: "Bank-Level Security",
-    description: "256-bit encryption and blockchain-based identity protection",
+    title: "완벽한 보안",
+    description: "256비트 암호화와 블록체인 기반 신원 보호",
     stat: "Zero",
-    statLabel: "Data Breaches"
+    statLabel: "데이터 유출"
   },
   {
     icon: Award,
-    title: "Elite Community",
-    description: "Curated membership of successful professionals and entrepreneurs",
-    stat: "Top 5%",
-    statLabel: "Income Bracket"
+    title: "프리미엄 멤버십",
+    description: "성공한 전문직과 사업가들의 선택",
+    stat: "상위 5%",
+    statLabel: "소득 수준"
   },
   {
     icon: Globe,
-    title: "Global Network",
-    description: "Connect with elite singles from major cities worldwide",
+    title: "글로벌 네트워크",
+    description: "전 세계 주요 도시의 엘리트 싱글들",
     stat: "50+",
-    statLabel: "Cities"
+    statLabel: "도시"
   }
-]
-
-const pressLogos = [
-  "Forbes",
-  "TechCrunch",
-  "The Wall Street Journal",
-  "Bloomberg",
-  "Financial Times"
 ]
 
 export default function TrustSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-primary-dark opacity-50" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/50 to-transparent" />
-      
-      <div className="relative z-10 container mx-auto px-6">
+    <section id="features" className="py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,17 +47,16 @@ export default function TrustSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            <span className="text-neutral-pearl">Trust & </span>
-            <span className="gradient-text">Excellence</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            믿을 수 있는 <span className="text-primary">프리미엄 서비스</span>
           </h2>
-          <p className="text-xl text-neutral-silver max-w-2xl mx-auto">
-            Join the most exclusive dating platform with unparalleled security and verification
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            철저한 검증과 최고의 보안으로 안심하고 만남을 시작하세요
           </p>
         </motion.div>
 
         {/* Trust cards grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {trustItems.map((item, index) => (
             <motion.div
               key={item.title}
@@ -78,87 +65,56 @@ export default function TrustSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <GlassCard hoverable className="h-full">
-                <div className="flex flex-col items-center text-center">
-                  <div className="relative mb-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-accent-gold to-accent-rose flex items-center justify-center">
-                      <item.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="absolute inset-0 bg-accent-gold/20 rounded-full blur-xl animate-pulse" />
+              <Card className="h-full text-center">
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <item.icon className="w-7 h-7 text-primary" />
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-neutral-pearl mb-2">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-neutral-silver mb-4">
+                  <p className="text-sm text-gray-600 mb-4">
                     {item.description}
                   </p>
                   
-                  <div className="mt-auto pt-4 border-t border-white/10 w-full">
-                    <div className="text-3xl font-bold gradient-text">{item.stat}</div>
-                    <div className="text-xs text-neutral-silver uppercase tracking-wider">
+                  <div className="mt-auto pt-4 border-t border-gray-200 w-full">
+                    <div className="text-2xl font-bold text-primary">{item.stat}</div>
+                    <div className="text-xs text-gray-500 uppercase tracking-wider">
                       {item.statLabel}
                     </div>
                   </div>
                 </div>
-              </GlassCard>
+              </Card>
             </motion.div>
           ))}
         </div>
 
-        {/* Press section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
-        >
-          <p className="text-sm text-neutral-silver uppercase tracking-wider mb-8">
-            As Featured In
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            {pressLogos.map((logo, index) => (
-              <motion.div
-                key={logo}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="text-2xl md:text-3xl font-display text-neutral-silver/50 hover:text-accent-gold transition-colors"
-              >
-                {logo}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Real-time stats ticker */}
+        {/* Real-time stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16"
         >
-          <GlassCard className="overflow-hidden">
-            <div className="flex items-center justify-between py-4 px-6">
+          <Card>
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <Users className="w-5 h-5 text-accent-gold" />
-                <span className="text-neutral-pearl">Live Member Activity</span>
+                <Users className="w-5 h-5 text-primary" />
+                <span className="text-gray-900 font-medium">실시간 활동</span>
               </div>
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm text-neutral-silver">2,847 Online Now</span>
+                  <span className="text-sm text-gray-600">2,847명 온라인</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent-gold" />
-                  <span className="text-sm text-neutral-silver">12 New Matches Today</span>
+                  <CheckCircle className="w-4 h-4 text-primary" />
+                  <span className="text-sm text-gray-600">오늘 12건 매칭</span>
                 </div>
               </div>
             </div>
-          </GlassCard>
+          </Card>
         </motion.div>
       </div>
     </section>

@@ -2,70 +2,57 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Brain, Sparkles, Heart, TrendingUp, Zap, Eye } from "lucide-react"
-import GlassCard from "@/components/ui/GlassCard"
+import { Brain, Sparkles, TrendingUp, Zap, Eye } from "lucide-react"
+import Card from "@/components/ui/Card"
 import Button from "@/components/ui/Button"
 
 const aiFeatures = [
   {
     icon: Brain,
-    title: "Neural Matching",
-    description: "Deep learning algorithms analyze 200+ compatibility factors"
+    title: "심층 매칭",
+    description: "200개 이상의 호환성 요소를 분석하는 딥러닝"
   },
   {
     icon: Eye,
-    title: "Facial Analysis",
-    description: "AI reads micro-expressions to gauge genuine attraction"
+    title: "표정 분석",
+    description: "미세표정으로 진정한 매력도를 측정"
   },
   {
     icon: Zap,
-    title: "Real-time Learning",
-    description: "Algorithm improves with every interaction and feedback"
+    title: "실시간 학습",
+    description: "모든 상호작용을 통해 계속 발전하는 AI"
   },
   {
     icon: TrendingUp,
-    title: "Predictive Success",
-    description: "92% accuracy in predicting long-term compatibility"
+    title: "예측 정확도",
+    description: "장기적 호환성 예측 92% 정확도"
   }
 ]
 
 export default function AIShowcaseSection() {
-  const [activeTab, setActiveTab] = useState(0)
   const [compatibility, setCompatibility] = useState(0)
+  const [isCalculating, setIsCalculating] = useState(false)
 
-  // Simulate compatibility calculation
   const calculateCompatibility = () => {
+    setIsCalculating(true)
+    setCompatibility(0)
+    
+    // 애니메이션 효과로 점수 증가
     let score = 0
     const interval = setInterval(() => {
       score += Math.random() * 10
       if (score >= 87) {
         score = 87
         clearInterval(interval)
+        setIsCalculating(false)
       }
       setCompatibility(Math.round(score))
     }, 50)
   }
 
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-light to-primary opacity-90" />
-        <motion.div
-          className="absolute inset-0 bg-gradient-radial from-accent-gold/10 via-transparent to-transparent"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-6">
+    <section id="technology" className="py-20 bg-white">
+      <div className="container mx-auto px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -74,17 +61,16 @@ export default function AIShowcaseSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
-            <Sparkles className="w-4 h-4 text-accent-gold" />
-            <span className="text-sm text-neutral-pearl">Powered by Advanced AI</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 mb-6">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm text-primary font-medium">AI 기반 매칭</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            <span className="text-neutral-pearl">The Science of </span>
-            <span className="gradient-text">Perfect Matches</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            과학적인 <span className="text-primary">완벽한 매칭</span>
           </h2>
-          <p className="text-xl text-neutral-silver max-w-2xl mx-auto">
-            Our proprietary AI analyzes thousands of data points to find your ideal partner
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            수천 개의 데이터 포인트를 분석해 당신의 이상형을 찾아드립니다
           </p>
         </motion.div>
 
@@ -96,97 +82,55 @@ export default function AIShowcaseSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <GlassCard className="p-8">
-              <h3 className="text-2xl font-display font-semibold text-neutral-pearl mb-6">
-                AI Compatibility Demo
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                AI 호환성 테스트
               </h3>
               
-              {/* Profile tabs */}
-              <div className="flex gap-4 mb-6">
-                {["Profile A", "Profile B"].map((profile, index) => (
-                  <button
-                    key={profile}
-                    onClick={() => setActiveTab(index)}
-                    className={`px-4 py-2 rounded-lg transition-all ${
-                      activeTab === index
-                        ? "bg-gradient-to-r from-accent-gold to-accent-rose text-primary"
-                        : "bg-white/5 text-neutral-silver hover:bg-white/10"
-                    }`}
-                  >
-                    {profile}
-                  </button>
-                ))}
-              </div>
-
-              {/* Compatibility Wheel */}
+              {/* Compatibility Display */}
               <div className="relative mb-8">
-                <div className="w-48 h-48 mx-auto relative">
-                  <svg className="w-full h-full transform -rotate-90">
-                    <circle
-                      cx="96"
-                      cy="96"
-                      r="88"
-                      stroke="rgba(255,255,255,0.1)"
-                      strokeWidth="8"
-                      fill="none"
-                    />
-                    <motion.circle
-                      cx="96"
-                      cy="96"
-                      r="88"
-                      stroke="url(#gradient)"
-                      strokeWidth="8"
-                      fill="none"
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: compatibility / 100 }}
-                      transition={{ duration: 2, ease: "easeOut" }}
-                      style={{
-                        strokeDasharray: 553,
-                        strokeDashoffset: 553 * (1 - compatibility / 100),
-                      }}
-                    />
-                    <defs>
-                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#D4AF37" />
-                        <stop offset="100%" stopColor="#E8B4B8" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <Heart className="w-8 h-8 text-accent-rose mb-2" />
-                    <div className="text-3xl font-bold text-neutral-pearl">
-                      {compatibility}%
-                    </div>
-                    <div className="text-xs text-neutral-silver">Compatibility</div>
+                <div className="text-center">
+                  <div className="text-6xl font-bold text-primary mb-2">
+                    {compatibility}%
                   </div>
+                  <div className="text-sm text-gray-600">호환성 점수</div>
+                </div>
+                
+                {/* Progress bar */}
+                <div className="mt-6 bg-gray-200 rounded-full h-3 overflow-hidden">
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-primary to-primary-dark rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${compatibility}%` }}
+                    transition={{ duration: 0.5 }}
+                  />
                 </div>
               </div>
 
               <Button
                 onClick={calculateCompatibility}
-                variant="luxury"
+                variant="primary"
                 className="w-full"
-                glowing
+                disabled={isCalculating}
               >
-                Calculate Match Score
+                {isCalculating ? "분석 중..." : "매칭 점수 계산하기"}
               </Button>
 
               <div className="mt-6 space-y-3">
-                <div className="flex items-center justify-between py-2 border-b border-white/10">
-                  <span className="text-sm text-neutral-silver">Personality Match</span>
-                  <span className="text-sm font-semibold text-accent-gold">94%</span>
+                <div className="flex items-center justify-between py-2 border-b border-gray-200">
+                  <span className="text-sm text-gray-600">성격 매칭</span>
+                  <span className="text-sm font-semibold text-primary">94%</span>
                 </div>
-                <div className="flex items-center justify-between py-2 border-b border-white/10">
-                  <span className="text-sm text-neutral-silver">Lifestyle Compatibility</span>
-                  <span className="text-sm font-semibold text-accent-gold">88%</span>
+                <div className="flex items-center justify-between py-2 border-b border-gray-200">
+                  <span className="text-sm text-gray-600">라이프스타일</span>
+                  <span className="text-sm font-semibold text-primary">88%</span>
                 </div>
-                <div className="flex items-center justify-between py-2 border-b border-white/10">
-                  <span className="text-sm text-neutral-silver">Long-term Potential</span>
-                  <span className="text-sm font-semibold text-accent-gold">91%</span>
+                <div className="flex items-center justify-between py-2 border-b border-gray-200">
+                  <span className="text-sm text-gray-600">장기적 가능성</span>
+                  <span className="text-sm font-semibold text-primary">91%</span>
                 </div>
               </div>
-            </GlassCard>
+            </Card>
           </motion.div>
 
           {/* Features Grid */}
@@ -205,46 +149,23 @@ export default function AIShowcaseSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <GlassCard hoverable className="h-full">
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-gold/20 to-accent-rose/20 flex items-center justify-center mb-4">
-                      <feature.icon className="w-6 h-6 text-accent-gold" />
+                <Card className="text-center">
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                      <feature.icon className="w-6 h-6 text-primary" />
                     </div>
-                    <h4 className="font-semibold text-neutral-pearl mb-2">
+                    <h4 className="font-semibold text-gray-900 mb-2">
                       {feature.title}
                     </h4>
-                    <p className="text-xs text-neutral-silver">
+                    <p className="text-xs text-gray-600">
                       {feature.description}
                     </p>
                   </div>
-                </GlassCard>
+                </Card>
               </motion.div>
             ))}
           </motion.div>
         </div>
-
-        {/* Tech Stack */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-sm text-neutral-silver uppercase tracking-wider mb-4">
-            Powered By
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-6">
-            {["GPT-4", "TensorFlow", "PyTorch", "Azure AI"].map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-neutral-silver text-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )

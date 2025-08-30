@@ -2,74 +2,46 @@
 
 import { motion } from "framer-motion"
 import { Heart, TrendingUp, Calendar, Users } from "lucide-react"
-import GlassCard from "@/components/ui/GlassCard"
+import Card from "@/components/ui/Card"
 
 const stats = [
-  { number: "10,847", label: "Active Members", icon: Users },
-  { number: "3,291", label: "Successful Matches", icon: Heart },
-  { number: "87%", label: "Success Rate", icon: TrendingUp },
-  { number: "428", label: "Engagements This Year", icon: Calendar }
+  { number: "10,847", label: "활성 회원", icon: Users },
+  { number: "3,291", label: "성공 매칭", icon: Heart },
+  { number: "87%", label: "성공률", icon: TrendingUp },
+  { number: "428", label: "올해 약혼", icon: Calendar }
 ]
 
 const testimonials = [
   {
-    name: "Sarah K.",
+    name: "김서연",
     age: 32,
-    role: "Investment Banker",
-    story: "I was skeptical about online dating, but AURA's verification process and quality of members completely changed my perspective. Met my fiancé within 3 months!",
+    role: "투자은행 임원",
+    story: "온라인 데이팅에 회의적이었지만, 오라의 검증 시스템과 회원들의 수준이 제 생각을 완전히 바꿔놓았어요. 3개월 만에 운명의 상대를 만났습니다!",
     rating: 5,
-    matched: "David L., Private Equity Partner"
+    matched: "이준호, 사모펀드 파트너"
   },
   {
-    name: "Michael R.",
+    name: "박민수",
     age: 38,
-    role: "Tech Entrepreneur",
-    story: "The AI matching is incredibly accurate. It understood what I was looking for better than I did myself. Now happily married for 2 years.",
+    role: "스타트업 대표",
+    story: "AI 매칭이 정말 놀라울 정도로 정확해요. 제가 원하는 것을 저보다 더 잘 이해하고 있었죠. 이제 결혼한 지 2년이 되었습니다.",
     rating: 5,
-    matched: "Emma S., Creative Director"
+    matched: "정하은, 크리에이티브 디렉터"
   },
   {
-    name: "Jennifer M.",
+    name: "최지원",
     age: 35,
-    role: "Medical Director",
-    story: "Quality over quantity - that's what sets AURA apart. Every match was meaningful and aligned with my values and lifestyle.",
+    role: "의료원장",
+    story: "양보다 질 - 그것이 오라를 특별하게 만듭니다. 모든 매칭이 의미 있었고 제 가치관과 라이프스타일에 완벽하게 맞았어요.",
     rating: 5,
-    matched: "Robert T., Surgeon"
+    matched: "김태현, 외과 전문의"
   }
 ]
 
 export default function SuccessSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-light to-primary" />
-      
-      {/* Animated hearts background */}
-      <div className="absolute inset-0 opacity-10">
-        {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-accent-rose"
-            initial={{
-              x: Math.random() * 1920,
-              y: 1080,
-            }}
-            animate={{
-              y: -100,
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              delay: Math.random() * 10,
-              ease: "linear",
-            }}
-          >
-            <Heart size={Math.random() * 20 + 10} fill="currentColor" />
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="relative z-10 container mx-auto px-6">
+    <section id="success" className="py-20 bg-white">
+      <div className="container mx-auto px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,12 +50,11 @@ export default function SuccessSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            <span className="text-neutral-pearl">Real </span>
-            <span className="gradient-text">Success Stories</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            실제 <span className="text-primary">성공 스토리</span>
           </h2>
-          <p className="text-xl text-neutral-silver max-w-2xl mx-auto">
-            Join thousands of elite singles who found their perfect match
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            완벽한 인연을 찾은 수천 명의 회원들과 함께하세요
           </p>
         </motion.div>
 
@@ -97,15 +68,15 @@ export default function SuccessSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <GlassCard className="text-center py-8">
-                <stat.icon className="w-8 h-8 text-accent-gold mx-auto mb-4" />
-                <div className="text-3xl font-bold gradient-text mb-1">
+              <Card className="text-center py-8">
+                <stat.icon className="w-8 h-8 text-primary mx-auto mb-4" />
+                <div className="text-3xl font-bold text-primary mb-1">
                   {stat.number}
                 </div>
-                <div className="text-sm text-neutral-silver">
+                <div className="text-sm text-gray-600">
                   {stat.label}
                 </div>
-              </GlassCard>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -120,13 +91,13 @@ export default function SuccessSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <GlassCard hoverable className="h-full p-6">
+              <Card hoverable className="h-full">
                 {/* Rating stars */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <svg
                       key={i}
-                      className="w-5 h-5 text-accent-gold"
+                      className="w-5 h-5 text-yellow-500"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -136,23 +107,23 @@ export default function SuccessSection() {
                 </div>
 
                 {/* Story */}
-                <p className="text-neutral-silver mb-4 italic">
+                <p className="text-gray-600 mb-4 italic">
                   &ldquo;{testimonial.story}&rdquo;
                 </p>
 
                 {/* Profile info */}
-                <div className="border-t border-white/10 pt-4">
-                  <div className="font-semibold text-neutral-pearl">
-                    {testimonial.name}, {testimonial.age}
+                <div className="border-t border-gray-200 pt-4">
+                  <div className="font-semibold text-gray-900">
+                    {testimonial.name} ({testimonial.age}세)
                   </div>
-                  <div className="text-sm text-neutral-silver mb-2">
+                  <div className="text-sm text-gray-600 mb-2">
                     {testimonial.role}
                   </div>
-                  <div className="text-xs text-accent-gold">
-                    Matched with {testimonial.matched}
+                  <div className="text-xs text-primary">
+                    {testimonial.matched}님과 매칭
                   </div>
                 </div>
-              </GlassCard>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -165,27 +136,27 @@ export default function SuccessSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <GlassCard className="max-w-2xl mx-auto p-8">
-            <Heart className="w-12 h-12 text-accent-rose mx-auto mb-4" />
-            <h3 className="text-2xl font-display font-semibold text-neutral-pearl mb-4">
-              Our Success Guarantee
+          <Card className="max-w-2xl mx-auto p-8">
+            <Heart className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              성공 보장 프로그램
             </h3>
-            <p className="text-neutral-silver mb-6">
-              If you don&apos;t find a meaningful connection within 6 months, 
-              we&apos;ll extend your membership for free. That&apos;s how confident we are in our platform.
+            <p className="text-gray-600 mb-6">
+              6개월 내에 의미 있는 인연을 찾지 못하신다면, 
+              무료로 멤버십을 연장해 드립니다. 저희 플랫폼에 대한 자신감입니다.
             </p>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-8">
               <div className="text-center">
-                <div className="text-2xl font-bold gradient-text">6 Months</div>
-                <div className="text-sm text-neutral-silver">Average Time to Match</div>
+                <div className="text-2xl font-bold text-primary">6개월</div>
+                <div className="text-sm text-gray-600">평균 매칭 기간</div>
               </div>
-              <div className="w-px bg-white/20" />
+              <div className="w-px bg-gray-200" />
               <div className="text-center">
-                <div className="text-2xl font-bold gradient-text">100%</div>
-                <div className="text-sm text-neutral-silver">Satisfaction Rate</div>
+                <div className="text-2xl font-bold text-primary">100%</div>
+                <div className="text-sm text-gray-600">만족도</div>
               </div>
             </div>
-          </GlassCard>
+          </Card>
         </motion.div>
       </div>
     </section>

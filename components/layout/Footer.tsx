@@ -1,63 +1,88 @@
 "use client"
 
 import Link from "next/link"
-import { Sparkles, Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
 
 const footerLinks = {
   product: [
-    { label: "Features", href: "#features" },
-    { label: "Membership", href: "#membership" },
-    { label: "Success Stories", href: "#success" },
-    { label: "Events", href: "#events" }
+    { label: "기능", href: "#features" },
+    { label: "멤버십", href: "#membership" },
+    { label: "성공 스토리", href: "#success" },
+    { label: "이벤트", href: "#events" }
   ],
   company: [
-    { label: "About Us", href: "#about" },
-    { label: "Careers", href: "#careers" },
-    { label: "Press", href: "#press" },
-    { label: "Investors", href: "#investors" }
+    { label: "회사 소개", href: "#about" },
+    { label: "채용", href: "#careers" },
+    { label: "언론", href: "#press" },
+    { label: "투자자", href: "#investors" }
   ],
   support: [
-    { label: "Help Center", href: "#help" },
-    { label: "Safety", href: "#safety" },
-    { label: "Privacy Policy", href: "#privacy" },
-    { label: "Terms of Service", href: "#terms" }
+    { label: "고객센터", href: "#help" },
+    { label: "안전", href: "#safety" },
+    { label: "개인정보처리방침", href: "#privacy" },
+    { label: "이용약관", href: "#terms" }
   ],
   social: [
-    { label: "Instagram", href: "#instagram" },
-    { label: "LinkedIn", href: "#linkedin" },
-    { label: "Twitter", href: "#twitter" },
-    { label: "YouTube", href: "#youtube" }
+    { label: "인스타그램", href: "#instagram" },
+    { label: "링크드인", href: "#linkedin" },
+    { label: "트위터", href: "#twitter" },
+    { label: "유튜브", href: "#youtube" }
   ]
 }
 
 export default function Footer() {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    if (href.startsWith("#")) {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      } else {
+        alert(`${href.slice(1)} 페이지 준비중`)
+      }
+    }
+  }
+
   return (
-    <footer className="relative py-16 bg-primary-dark border-t border-white/10">
+    <footer className="py-16 bg-gray-100 border-t border-gray-200">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-5 gap-8 mb-12">
           {/* Brand column */}
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-8 h-8 text-accent-gold" />
-              <span className="text-2xl font-display font-bold text-neutral-pearl">
-                AURA<span className="text-accent-gold">Elite</span>
+              <span className="text-2xl font-bold text-primary">
+                오라
               </span>
             </Link>
-            <p className="text-sm text-neutral-silver mb-4">
-              Where Elite Singles Connect
+            <p className="text-sm text-gray-600 mb-4">
+              AI가 찾아주는 당신의 운명
             </p>
             <div className="space-y-2">
-              <a href="mailto:hello@auraelite.com" className="flex items-center gap-2 text-sm text-neutral-silver hover:text-accent-gold transition-colors">
+              <a 
+                href="mailto:hello@aura.co.kr" 
+                className="flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
+                onClick={(e) => {
+                  e.preventDefault()
+                  alert("이메일: hello@aura.co.kr")
+                }}
+              >
                 <Mail className="w-4 h-4" />
-                hello@auraelite.com
+                hello@aura.co.kr
               </a>
-              <a href="tel:1-800-AURA" className="flex items-center gap-2 text-sm text-neutral-silver hover:text-accent-gold transition-colors">
+              <a 
+                href="tel:02-1234-5678" 
+                className="flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
+                onClick={(e) => {
+                  e.preventDefault()
+                  alert("전화: 02-1234-5678")
+                }}
+              >
                 <Phone className="w-4 h-4" />
-                1-800-AURA
+                02-1234-5678
               </a>
-              <div className="flex items-center gap-2 text-sm text-neutral-silver">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
                 <MapPin className="w-4 h-4" />
-                NYC | SF | LA | Miami
+                서울 | 부산 | 제주
               </div>
             </div>
           </div>
@@ -65,52 +90,68 @@ export default function Footer() {
           {/* Links columns */}
           <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h4 className="font-semibold text-neutral-pearl mb-4">Product</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">서비스</h4>
               <ul className="space-y-2">
                 {footerLinks.product.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-neutral-silver hover:text-accent-gold transition-colors">
+                    <a 
+                      href={link.href} 
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className="text-sm text-gray-600 hover:text-primary transition-colors"
+                    >
                       {link.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-neutral-pearl mb-4">Company</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">회사</h4>
               <ul className="space-y-2">
                 {footerLinks.company.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-neutral-silver hover:text-accent-gold transition-colors">
+                    <a 
+                      href={link.href} 
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className="text-sm text-gray-600 hover:text-primary transition-colors"
+                    >
                       {link.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-neutral-pearl mb-4">Support</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">지원</h4>
               <ul className="space-y-2">
                 {footerLinks.support.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-neutral-silver hover:text-accent-gold transition-colors">
+                    <a 
+                      href={link.href} 
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className="text-sm text-gray-600 hover:text-primary transition-colors"
+                    >
                       {link.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-neutral-pearl mb-4">Social</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">소셜</h4>
               <ul className="space-y-2">
                 {footerLinks.social.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-neutral-silver hover:text-accent-gold transition-colors">
+                    <a 
+                      href={link.href} 
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className="text-sm text-gray-600 hover:text-primary transition-colors"
+                    >
                       {link.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -119,21 +160,33 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/10">
+        <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-neutral-silver">
-              © 2024 AURA Elite. All rights reserved.
+            <p className="text-sm text-gray-600">
+              © 2024 오라. 모든 권리 보유.
             </p>
             <div className="flex items-center gap-6">
-              <Link href="#privacy" className="text-sm text-neutral-silver hover:text-accent-gold transition-colors">
-                Privacy
-              </Link>
-              <Link href="#terms" className="text-sm text-neutral-silver hover:text-accent-gold transition-colors">
-                Terms
-              </Link>
-              <Link href="#cookies" className="text-sm text-neutral-silver hover:text-accent-gold transition-colors">
-                Cookies
-              </Link>
+              <a 
+                href="#privacy" 
+                onClick={(e) => handleLinkClick(e, "#privacy")}
+                className="text-sm text-gray-600 hover:text-primary transition-colors"
+              >
+                개인정보처리방침
+              </a>
+              <a 
+                href="#terms" 
+                onClick={(e) => handleLinkClick(e, "#terms")}
+                className="text-sm text-gray-600 hover:text-primary transition-colors"
+              >
+                이용약관
+              </a>
+              <a 
+                href="#cookies" 
+                onClick={(e) => handleLinkClick(e, "#cookies")}
+                className="text-sm text-gray-600 hover:text-primary transition-colors"
+              >
+                쿠키
+              </a>
             </div>
           </div>
         </div>

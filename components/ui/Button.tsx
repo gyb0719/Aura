@@ -2,52 +2,42 @@
 
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react"
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
 
-interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onDrag" | "onDragEnd" | "onDragStart"> {
-  variant?: "primary" | "secondary" | "luxury" | "ghost"
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary" | "ghost"
   size?: "sm" | "md" | "lg"
-  glowing?: boolean
   children?: ReactNode
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", glowing = false, children, ...props }, ref) => {
-    const baseStyles = "relative inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-full overflow-hidden group"
+  ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
+    const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20"
     
     const variants = {
-      primary: "bg-gradient-to-r from-accent-gold to-accent-rose text-primary hover:shadow-xl",
-      secondary: "bg-primary-light text-neutral-pearl hover:bg-primary border border-accent-gold/20",
-      luxury: "bg-gradient-gold text-primary hover:shadow-2xl",
-      ghost: "bg-transparent text-neutral-pearl hover:bg-white/10 border border-white/20"
+      primary: "bg-primary hover:bg-primary-dark text-white shadow-sm hover:shadow-md",
+      secondary: "bg-gray-100 hover:bg-gray-200 text-gray-900",
+      ghost: "bg-transparent hover:bg-gray-100 text-gray-700"
     }
     
     const sizes = {
-      sm: "px-4 py-2 text-sm",
-      md: "px-6 py-3 text-base",
-      lg: "px-8 py-4 text-lg"
+      sm: "px-3 py-1.5 text-sm",
+      md: "px-5 py-2.5 text-base",
+      lg: "px-6 py-3 text-lg"
     }
     
     return (
-      <motion.button
+      <button
         ref={ref}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
         className={cn(
           baseStyles,
           variants[variant],
           sizes[size],
-          glowing && "glow",
           className
         )}
         {...props}
       >
-        {glowing && (
-          <span className="absolute inset-0 bg-gradient-to-r from-accent-gold/20 to-accent-rose/20 animate-pulse" />
-        )}
-        <span className="relative z-10">{children}</span>
-        <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
-      </motion.button>
+        {children}
+      </button>
     )
   }
 )
