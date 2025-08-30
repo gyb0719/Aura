@@ -51,8 +51,11 @@ export default function AIShowcaseSection() {
   }
 
   return (
-    <section id="technology" className="py-32 bg-white">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section id="technology" className="py-32 min-h-screen relative mb-32">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-50 via-pink-50 to-white" />
+      <div className="absolute inset-0 bg-pattern-grid opacity-5" />
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,13 +64,13 @@ export default function AIShowcaseSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 mb-8">
-            <Sparkles className="w-5 h-5 text-primary" />
-            <span className="text-base text-primary font-medium">AI 기반 매칭</span>
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 mb-8 shadow-md">
+            <Sparkles className="w-5 h-5 text-purple-600" />
+            <span className="text-base bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent font-medium">AI 기반 매칭</span>
           </div>
           
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
-            과학적인 <span className="text-primary">완벽한 매칭</span>
+            과학적인 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">완벽한 매칭</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             수천 개의 데이터 포인트를 분석해 당신의 이상형을 찾아드립니다
@@ -149,10 +152,10 @@ export default function AIShowcaseSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="text-center p-6">
+                <Card className="text-center p-8">
                   <div className="flex flex-col items-center">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                      <feature.icon className="w-7 h-7 text-primary" />
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center mb-5 shadow-md">
+                      <feature.icon className="w-8 h-8 text-purple-600" />
                     </div>
                     <h4 className="font-semibold text-gray-900 mb-3 text-lg">
                       {feature.title}

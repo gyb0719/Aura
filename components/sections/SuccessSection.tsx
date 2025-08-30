@@ -40,8 +40,10 @@ const testimonials = [
 
 export default function SuccessSection() {
   return (
-    <section id="success" className="py-32 bg-white">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section id="success" className="py-32 min-h-screen relative mb-32">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-bl from-white via-pink-50 to-purple-50" />
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +53,7 @@ export default function SuccessSection() {
           className="text-center mb-24"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
-            실제 <span className="text-primary">성공 스토리</span>
+            실제 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">성공 스토리</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             완벽한 인연을 찾은 수천 명의 회원들과 함께하세요
@@ -68,9 +70,9 @@ export default function SuccessSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="text-center py-8">
-                <stat.icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary mb-1">
+              <Card className="text-center py-10">
+                <stat.icon className="w-10 h-10 text-purple-600 mx-auto mb-6" />
+                <div className="text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-2">
                   {stat.number}
                 </div>
                 <div className="text-sm text-gray-600">

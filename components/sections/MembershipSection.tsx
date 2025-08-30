@@ -78,8 +78,10 @@ export default function MembershipSection() {
   const [selectedTier, setSelectedTier] = useState(1)
 
   return (
-    <section id="membership" className="py-32 bg-gray-50">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section id="membership" className="py-32 min-h-screen relative mb-32">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-pink-50 via-white to-purple-50" />
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,7 +91,7 @@ export default function MembershipSection() {
           className="text-center mb-24"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
-            당신에게 맞는 <span className="text-primary">멤버십 선택</span>
+            당신에게 맞는 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">멤버십 선택</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             검증된 엘리트 싱글들의 커뮤니티에 참여하세요
@@ -116,17 +118,17 @@ export default function MembershipSection() {
               >
                 {tier.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="px-3 py-1 bg-primary text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-semibold rounded-full shadow-md">
                       인기
                     </span>
                   </div>
                 )}
 
-                <div className="p-6">
+                <div className="p-8">
                   {/* Tier icon and name */}
-                  <div className="flex items-center justify-center mb-4">
-                    <div className={`w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center`}>
-                      <tier.icon className="w-8 h-8 text-primary" />
+                  <div className="flex items-center justify-center mb-6">
+                    <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center shadow-lg`}>
+                      <tier.icon className="w-10 h-10 text-purple-600" />
                     </div>
                   </div>
 

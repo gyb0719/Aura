@@ -50,8 +50,11 @@ const upcomingEvents = [
 
 export default function EventsSection() {
   return (
-    <section className="py-32 bg-gray-50">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section className="py-32 min-h-screen relative mb-32">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-50 via-white to-pink-50" />
+      <div className="absolute inset-0 bg-pattern-dots opacity-5" />
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,7 +64,7 @@ export default function EventsSection() {
           className="text-center mb-24"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
-            독점 <span className="text-primary">엘리트 이벤트</span>
+            독점 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">엘리트 이벤트</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             검증된 회원들과 함께하는 프리미엄 소셜 이벤트
@@ -81,19 +84,19 @@ export default function EventsSection() {
               <Card hoverable className="overflow-hidden">
                 <div className="flex flex-col md:flex-row h-full">
                   {/* Event image placeholder */}
-                  <div className="md:w-1/3 h-48 md:h-auto bg-gradient-to-br from-primary/10 to-primary/20 relative flex items-center justify-center">
-                    <Calendar className="w-12 h-12 text-primary/50" />
+                  <div className="md:w-1/3 h-48 md:h-auto bg-gradient-to-br from-pink-100 to-purple-100 relative flex items-center justify-center">
+                    <Calendar className="w-12 h-12 text-purple-600/50" />
                     {event.tier === "다이아몬드 전용" && (
-                      <div className="absolute top-2 right-2 px-2 py-1 bg-primary text-white text-xs font-semibold rounded">
+                      <div className="absolute top-2 right-2 px-2 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-semibold rounded shadow-md">
                         VIP
                       </div>
                     )}
                   </div>
 
                   {/* Event details */}
-                  <div className="flex-1 p-6">
+                  <div className="flex-1 p-8">
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-xl font-semibold text-gray-900">
+                      <h3 className="text-2xl font-semibold text-gray-900">
                         {event.title}
                       </h3>
                       <span className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium">

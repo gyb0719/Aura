@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AURA Premium Dating Platform
 
-## Getting Started
+🌟 AI 기반 프리미엄 매칭 플랫폼
 
-First, run the development server:
+## 📋 소개
+
+AURA는 AI 기술을 활용하여 완벽한 인연을 찾아주는 프리미엄 데이팅 플랫폼입니다. 엄격한 회원 검증 시스템과 고급 매칭 알고리즘으로 성공한 싱글들을 위한 최고의 만남 서비스를 제공합니다.
+
+## 🎯 주요 기능
+
+- **AI 매칭 시스템** - 200개 이상의 호환성 요소 분석
+- **100% 검증된 프로필** - 신분증, 직장, SNS 다단계 검증
+- **프리미엄 멤버십** - 베이직부터 다이아몬드까지 4단계 멤버십
+- **독점 이벤트** - 와인 테이스팅, 요트 파티 등 엘리트 소셜 이벤트
+- **완벽한 보안** - 256비트 암호화 및 블록체인 기반 신원 보호
+
+## 🛠 기술 스택
+
+- **Frontend**: Next.js 14, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **UI/UX**: Apple-inspired design with romantic gradients
+- **Build**: Turbopack
+
+## 🚀 시작하기
 
 ```bash
+# 패키지 설치
+npm install
+
+# 개발 서버 실행
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 프로덕션 빌드
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📱 멤버십 티어
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **베이직** - ₩99,000/월
+- **프리미엄** - ₩199,000/월 
+- **플래티넘** - ₩399,000/월
+- **다이아몬드** - 초대 전용
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 디자인 특징
 
-## Learn More
+- 핑크-퍼플 그라데이션 색상 팔레트
+- 글라스모피즘 효과
+- 부드러운 애니메이션과 인터랙션
+- 모바일 반응형 디자인
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 라이선스
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2024 AURA. All rights reserved.

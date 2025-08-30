@@ -14,9 +14,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20"
     
     const variants = {
-      primary: "bg-primary hover:bg-primary-dark text-white shadow-sm hover:shadow-md",
-      secondary: "bg-gray-100 hover:bg-gray-200 text-gray-900",
-      ghost: "bg-transparent hover:bg-gray-100 text-gray-700"
+      primary: "bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl",
+      secondary: "bg-gradient-to-r from-purple-100 to-pink-100 hover:from-purple-200 hover:to-pink-200 text-purple-700 shadow-md hover:shadow-lg",
+      ghost: "bg-transparent hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 text-gray-700"
     }
     
     const sizes = {

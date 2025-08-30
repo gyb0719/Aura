@@ -12,12 +12,14 @@ export default function Home() {
     <>
       <Navigation />
       <main className="relative">
-        <HeroSection />
-        <TrustSection />
-        <AIShowcaseSection />
-        <MembershipSection />
-        <SuccessSection />
-        <EventsSection />
+        <div className="space-y-32">
+          <HeroSection />
+          <TrustSection />
+          <AIShowcaseSection />
+          <MembershipSection />
+          <SuccessSection />
+          <EventsSection />
+        </div>
       </main>
       <Footer />
     </>
