@@ -1,0 +1,174 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  name             String?
+  image            String?
+  role             UserRole @default(USER)
+  verified         Boolean  @default(false)
+  membershipTier   MembershipTier @default(BASIC)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  
+  profile          Profile?
+  subscription     Subscription?
+  matchesInitiated Match[]  @relation("UserMatch1")
+  matchesReceived  Match[]  @relation("UserMatch2")
+  sentMessages     Message[]
+  
+  @@index([email])
+}
+
+model Profile {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  bio               String?  @db.Text
+  age               Int
+  gender            Gender
+  location          String
+  occupation        String?
+  education         String?
+  height            Int?
+  interests         String[]
+  lookingFor        LookingFor[]
+  photos            Photo[]
+  preferences       Json?
+  verified          Boolean  @default(false)
+  verificationStatus Json?
+  completionScore   Int      @default(0)
+  lastActive        DateTime @default(now())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([age, gender, location])
+}
+
+model Photo {
+  id        String   @id @default(cuid())
+  profileId String
+  url       String
+  isPrimary Boolean  @default(false)
+  isVerified Boolean @default(false)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  
+  @@index([profileId])
+}
+
+model Match {
+  id              String      @id @default(cuid())
+  userId1         String
+  userId2         String
+  compatibility   Float       @default(0)
+  status          MatchStatus @default(PENDING)
+  initiatedBy     String?
+  matchedAt       DateTime?
+  lastInteraction DateTime?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  
+  user1           User        @relation("UserMatch1", fields: [userId1], references: [id], onDelete: Cascade)
+  user2           User        @relation("UserMatch2", fields: [userId2], references: [id], onDelete: Cascade)
+  messages        Message[]
+  
+  @@unique([userId1, userId2])
+  @@index([userId1])
+  @@index([userId2])
+  @@index([status])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  matchId   String
+  senderId  String
+  content   String   @db.Text
+  read      Boolean  @default(false)
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+  
+  match     Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  sender    User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  
+  @@index([matchId])
+  @@index([senderId])
+}
+
+model Subscription {
+  id                   String             @id @default(cuid())
+  userId               String             @unique
+  tier                 MembershipTier
+  status               SubscriptionStatus @default(TRIAL)
+  currentPeriodStart   DateTime           @default(now())
+  currentPeriodEnd     DateTime
+  cancelAtPeriodEnd    Boolean            @default(false)
+  stripeCustomerId     String?            @unique
+  stripeSubscriptionId String?            @unique
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  
+  user                 User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([status])
+}
+
+enum UserRole {
+  USER
+  PREMIUM
+  ADMIN
+}
+
+enum MembershipTier {
+  BASIC
+  PREMIUM
+  PLATINUM
+  DIAMOND
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum LookingFor {
+  RELATIONSHIP
+  MARRIAGE
+  FRIENDSHIP
+  DATING
+}
+
+enum MatchStatus {
+  PENDING
+  MATCHED
+  REJECTED
+  EXPIRED
+  BLOCKED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  TRIAL
+  PAST_DUE
+}
