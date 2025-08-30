@@ -51,30 +51,30 @@ export default function AIShowcaseSection() {
   }
 
   return (
-    <section id="technology" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="technology" className="py-32 bg-white">
+      <div className="container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 mb-6">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary font-medium">AI 기반 매칭</span>
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 mb-8">
+            <Sparkles className="w-5 h-5 text-primary" />
+            <span className="text-base text-primary font-medium">AI 기반 매칭</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
             과학적인 <span className="text-primary">완벽한 매칭</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             수천 개의 데이터 포인트를 분석해 당신의 이상형을 찾아드립니다
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Interactive Demo */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -139,7 +139,7 @@ export default function AIShowcaseSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-2 gap-6"
           >
             {aiFeatures.map((feature, index) => (
               <motion.div
@@ -149,15 +149,15 @@ export default function AIShowcaseSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="text-center">
+                <Card className="text-center p-6">
                   <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                      <feature.icon className="w-6 h-6 text-primary" />
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                      <feature.icon className="w-7 h-7 text-primary" />
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-2">
+                    <h4 className="font-semibold text-gray-900 mb-3 text-lg">
                       {feature.title}
                     </h4>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-sm text-gray-600">
                       {feature.description}
                     </p>
                   </div>

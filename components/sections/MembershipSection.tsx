@@ -78,26 +78,26 @@ export default function MembershipSection() {
   const [selectedTier, setSelectedTier] = useState(1)
 
   return (
-    <section id="membership" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section id="membership" className="py-32 bg-gray-50">
+      <div className="container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
             당신에게 맞는 <span className="text-primary">멤버십 선택</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             검증된 엘리트 싱글들의 커뮤니티에 참여하세요
           </p>
         </motion.div>
 
         {/* Membership cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {membershipTiers.map((tier, index) => (
             <motion.div
               key={tier.name}

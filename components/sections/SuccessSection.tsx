@@ -40,26 +40,26 @@ const testimonials = [
 
 export default function SuccessSection() {
   return (
-    <section id="success" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="success" className="py-32 bg-white">
+      <div className="container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
             실제 <span className="text-primary">성공 스토리</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             완벽한 인연을 찾은 수천 명의 회원들과 함께하세요
           </p>
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -82,7 +82,7 @@ export default function SuccessSection() {
         </div>
 
         {/* Testimonials */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 mb-24">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}

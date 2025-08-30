@@ -37,26 +37,26 @@ const trustItems = [
 
 export default function TrustSection() {
   return (
-    <section id="features" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section id="features" className="py-32 bg-gray-50">
+      <div className="container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
             믿을 수 있는 <span className="text-primary">프리미엄 서비스</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             철저한 검증과 최고의 보안으로 안심하고 만남을 시작하세요
           </p>
         </motion.div>
 
         {/* Trust cards grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
           {trustItems.map((item, index) => (
             <motion.div
               key={item.title}

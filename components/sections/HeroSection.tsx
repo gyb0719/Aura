@@ -26,14 +26,14 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-6 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="container mx-auto px-6 lg:px-12 py-32">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Main headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight"
           >
             <span className="text-gray-900">당신의 완벽한</span>
             <br />
@@ -47,7 +47,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed"
           >
             AI가 분석하는 성향 매칭으로 진정한 인연을 찾아드립니다.
             검증된 프리미엄 회원들과 함께하세요.
@@ -58,25 +58,25 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="max-w-md mx-auto"
+            className="max-w-lg mx-auto"
           >
-            <form onSubmit={handleWaitlistSubmit} className="flex flex-col sm:flex-row gap-3">
+            <form onSubmit={handleWaitlistSubmit} className="flex flex-col sm:flex-row gap-4">
               <input
                 type="email"
                 placeholder="이메일 주소"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-5 py-4 rounded-xl border border-gray-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900 placeholder-gray-500"
+                className="flex-1 px-6 py-5 rounded-2xl border border-gray-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900 placeholder-gray-500 text-lg"
                 required
               />
               <button
                 type="submit"
-                className="px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                className="px-10 py-5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-2xl transition-all hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-lg"
               >
                 {isSubmitted ? "등록 완료!" : "시작하기"}
               </button>
             </form>
-            <p className="text-sm text-gray-500 mt-4">
+            <p className="text-base text-gray-500 mt-6">
               무료로 시작하고 언제든 취소할 수 있습니다
             </p>
           </motion.div>
@@ -86,19 +86,19 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto"
+            className="grid grid-cols-3 gap-12 mt-32 max-w-3xl mx-auto"
           >
             <div>
-              <div className="text-3xl font-bold text-gray-900">10만+</div>
-              <div className="text-sm text-gray-600">활성 회원</div>
+              <div className="text-4xl md:text-5xl font-bold text-gray-900">10만+</div>
+              <div className="text-base text-gray-600 mt-2">활성 회원</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-gray-900">87%</div>
-              <div className="text-sm text-gray-600">매칭 성공률</div>
+              <div className="text-4xl md:text-5xl font-bold text-gray-900">87%</div>
+              <div className="text-base text-gray-600 mt-2">매칭 성공률</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-gray-900">4.9점</div>
-              <div className="text-sm text-gray-600">사용자 만족도</div>
+              <div className="text-4xl md:text-5xl font-bold text-gray-900">4.9점</div>
+              <div className="text-base text-gray-600 mt-2">사용자 만족도</div>
             </div>
           </motion.div>
         </div>

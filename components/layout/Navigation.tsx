@@ -32,8 +32,8 @@ export default function Navigation() {
         isScrolled ? "bg-white/95 backdrop-blur-lg shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <span className="text-2xl font-bold">

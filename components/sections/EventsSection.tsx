@@ -50,26 +50,26 @@ const upcomingEvents = [
 
 export default function EventsSection() {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section className="py-32 bg-gray-50">
+      <div className="container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
             독점 <span className="text-primary">엘리트 이벤트</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             검증된 회원들과 함께하는 프리미엄 소셜 이벤트
           </p>
         </motion.div>
 
         {/* Events grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {upcomingEvents.map((event, index) => (
             <motion.div
               key={event.title}
