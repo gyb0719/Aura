@@ -63,10 +63,10 @@ export default function EventsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-900">
             독점 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">엘리트 이벤트</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-4">
             검증된 회원들과 함께하는 프리미엄 소셜 이벤트
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ export default function EventsSection() {
                   {/* Event details */}
                   <div className="flex-1 p-8">
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-2xl font-semibold text-gray-900">
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                         {event.title}
                       </h3>
                       <span className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium">
@@ -165,7 +165,7 @@ export default function EventsSection() {
           className="text-center"
         >
           <Card className="max-w-2xl mx-auto p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
               나만의 엘리트 이벤트 개최
             </h3>
             <p className="text-gray-600 mb-6">

@@ -69,10 +69,10 @@ export default function AIShowcaseSection() {
             <span className="text-base bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent font-medium">AI 기반 매칭</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-900">
             과학적인 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">완벽한 매칭</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-4">
             수천 개의 데이터 포인트를 분석해 당신의 이상형을 찾아드립니다
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export default function AIShowcaseSection() {
             transition={{ duration: 0.6 }}
           >
             <Card className="p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-8">
                 AI 호환성 테스트
               </h3>
               
@@ -157,10 +157,10 @@ export default function AIShowcaseSection() {
                     <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center mb-5 shadow-md">
                       <feature.icon className="w-8 h-8 text-purple-600" />
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-3 text-lg">
+                    <h4 className="font-semibold text-gray-900 mb-5 text-lg">
                       {feature.title}
                     </h4>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>

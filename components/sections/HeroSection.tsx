@@ -30,13 +30,13 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50" />
       <div className="absolute inset-0 bg-pattern-dots opacity-5" />
       <div className="container mx-auto px-6 lg:px-12 py-32 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
           {/* Main headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-12 tracking-tight text-center w-full"
           >
             <span className="text-gray-900">당신의 완벽한</span>
             <br />
@@ -50,7 +50,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-            className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-20 max-w-3xl mx-auto leading-relaxed text-center"
           >
             AI가 분석하는 성향 매칭으로 진정한 인연을 찾아드립니다.
             검증된 프리미엄 회원들과 함께하세요.
@@ -61,7 +61,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="max-w-lg mx-auto"
+            className="max-w-lg mx-auto w-full"
           >
             <form onSubmit={handleWaitlistSubmit} className="flex flex-col sm:flex-row gap-4">
               <input
@@ -89,28 +89,28 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="grid grid-cols-3 gap-12 mt-32 max-w-3xl mx-auto"
+            className="grid grid-cols-3 gap-8 md:gap-12 mt-32 max-w-3xl mx-auto w-full"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="text-center"
+              className="text-center flex flex-col items-center"
             >
               <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">10만+</div>
-              <div className="text-base text-gray-600 mt-2">활성 회원 👥</div>
+              <div className="text-base text-gray-600 mt-3">활성 회원 👥</div>
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="text-center"
+              className="text-center flex flex-col items-center"
             >
               <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">87%</div>
-              <div className="text-base text-gray-600 mt-2">매칭 성공률 🎯</div>
+              <div className="text-base text-gray-600 mt-3">매칭 성공률 🎯</div>
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="text-center"
+              className="text-center flex flex-col items-center"
             >
               <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">4.9점</div>
-              <div className="text-base text-gray-600 mt-2">사용자 만족도 ⭐</div>
+              <div className="text-base text-gray-600 mt-3">사용자 만족도 ⭐</div>
             </motion.div>
           </motion.div>
         </div>

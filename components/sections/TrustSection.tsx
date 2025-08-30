@@ -53,10 +53,10 @@ export default function TrustSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-900">
             믿을 수 있는 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">프리미엄 서비스</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-4">
             철저한 검증과 최고의 보안으로 안심하고 만남을 시작하세요
           </p>
         </motion.div>
@@ -77,10 +77,10 @@ export default function TrustSection() {
                     <item.icon className="w-10 h-10 text-purple-600" />
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6">
                     {item.title}
                   </h3>
-                  <p className="text-base text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-base text-gray-600 mb-8 leading-relaxed">
                     {item.description}
                   </p>
                   
