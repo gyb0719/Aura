@@ -4,25 +4,53 @@ import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react"
 import { cn } from "@/lib/utils"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost"
+  variant?: "primary" | "secondary" | "ghost" | "outline" | "danger"
   size?: "sm" | "md" | "lg"
+  fullWidth?: boolean
   children?: ReactNode
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
-    const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20"
+  ({ className, variant = "primary", size = "md", fullWidth = false, disabled, children, ...props }, ref) => {
+    const baseStyles = cn(
+      "inline-flex items-center justify-center font-medium transition-all duration-200",
+      "rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2",
+      "disabled:opacity-50 disabled:cursor-not-allowed",
+      "transform active:scale-[0.98]",
+      fullWidth && "w-full"
+    )
     
     const variants = {
-      primary: "bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl",
-      secondary: "bg-gradient-to-r from-purple-100 to-pink-100 hover:from-purple-200 hover:to-pink-200 text-purple-700 shadow-md hover:shadow-lg",
-      ghost: "bg-transparent hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 text-gray-700"
+      primary: cn(
+        "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg",
+        "hover:from-pink-600 hover:to-purple-700 hover:shadow-xl hover:-translate-y-0.5",
+        "focus:ring-purple-500"
+      ),
+      secondary: cn(
+        "bg-white text-gray-900 border border-gray-200 shadow-sm",
+        "hover:bg-gray-50 hover:border-gray-300 hover:shadow-md hover:-translate-y-0.5",
+        "focus:ring-gray-400"
+      ),
+      outline: cn(
+        "border-2 border-pink-500 text-pink-600 bg-transparent",
+        "hover:bg-pink-50 hover:border-pink-600",
+        "focus:ring-pink-500"
+      ),
+      ghost: cn(
+        "text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+        "focus:ring-gray-400"
+      ),
+      danger: cn(
+        "bg-red-500 text-white shadow-lg",
+        "hover:bg-red-600 hover:shadow-xl hover:-translate-y-0.5",
+        "focus:ring-red-500"
+      )
     }
     
     const sizes = {
-      sm: "px-4 py-2 text-sm",
-      md: "px-6 py-3 text-base",
-      lg: "px-8 py-4 text-lg"
+      sm: "px-3 py-1.5 text-sm gap-1.5",
+      md: "px-5 py-2.5 text-base gap-2",
+      lg: "px-6 py-3 text-lg gap-2.5"
     }
     
     return (
@@ -34,6 +62,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           sizes[size],
           className
         )}
+        disabled={disabled}
         {...props}
       >
         {children}

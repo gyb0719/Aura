@@ -119,7 +119,7 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-function calculateCompletionScore(data: any): number {
+function calculateCompletionScore(data: Record<string, unknown>): number {
   let score = 0
   const fields = ['bio', 'age', 'gender', 'location', 'occupation', 'education', 'height', 'interests', 'lookingFor']
   

@@ -1,9 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { prisma } from '@/lib/db/prisma'
-import { Gender, MatchStatus } from '@prisma/client'
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
@@ -26,7 +25,13 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const preferences = userProfile.preferences as any || {}
+    interface Preferences {
+      gender?: string[]
+      ageRange?: [number, number]
+      distance?: number
+    }
+    
+    const preferences = (userProfile.preferences || {}) as Preferences
     
     const existingMatches = await prisma.match.findMany({
       where: {
@@ -116,19 +121,30 @@ export async function GET(request: NextRequest) {
   }
 }
 
-async function calculateDetailedCompatibility(profile1: any, profile2: any): Promise<number> {
+interface ProfileCompat {
+  interests?: string[]
+  lookingFor?: string[]
+  age: number
+  location: string
+  education?: string | null
+  verified: boolean
+  completionScore: number
+  lastActive: Date
+}
+
+async function calculateDetailedCompatibility(profile1: ProfileCompat, profile2: ProfileCompat): Promise<number> {
   let score = 50
 
   if (profile1.interests && profile2.interests) {
     const commonInterests = profile1.interests.filter((i: string) => 
-      profile2.interests.includes(i)
+      profile2.interests?.includes(i)
     )
     score += Math.min(commonInterests.length * 3, 15)
   }
 
   if (profile1.lookingFor && profile2.lookingFor) {
     const commonGoals = profile1.lookingFor.filter((g: string) => 
-      profile2.lookingFor.includes(g)
+      profile2.lookingFor?.includes(g)
     )
     score += Math.min(commonGoals.length * 5, 20)
   }

@@ -32,22 +32,22 @@ export default function Navigation() {
         isScrolled ? "bg-white/95 backdrop-blur-lg shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold">
-              <span className="text-primary">AURA</span>
+            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+              AURA
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
+                className="text-sm lg:text-base text-gray-700 hover:text-pink-600 transition-colors duration-200 font-medium"
                 onClick={(e) => {
                   e.preventDefault()
                   const element = document.querySelector(link.href)
@@ -60,19 +60,19 @@ export default function Navigation() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-            <button
-              onClick={() => alert("로그인 기능 준비중")}
-              className="px-4 py-2 text-gray-700 hover:text-primary transition-colors"
+          <div className="hidden md:flex items-center gap-3 lg:gap-4">
+            <Link
+              href="/auth/signin"
+              className="px-4 py-2 text-sm lg:text-base text-gray-700 hover:text-pink-600 transition-colors font-medium"
             >
               로그인
-            </button>
-            <button
-              onClick={() => alert("회원가입 기능 준비중")}
-              className="px-6 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-all hover:shadow-lg"
+            </Link>
+            <Link
+              href="/auth/signup"
+              className="px-5 lg:px-6 py-2 lg:py-2.5 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white text-sm lg:text-base font-medium rounded-xl transition-all hover:shadow-lg transform hover:-translate-y-0.5"
             >
               시작하기
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}

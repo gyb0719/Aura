@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
-import { Camera, MapPin, Briefcase, GraduationCap, Heart, Edit2, Check, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Camera, MapPin, Briefcase, GraduationCap, Heart, Edit2, Check, X, User, Shield, Star, TrendingUp, AlertCircle } from 'lucide-react'
+import OptimizedImage from '@/components/ui/OptimizedImage'
+import { ProfileCardSkeleton } from '@/components/ui/SkeletonLoader'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 
@@ -18,7 +20,7 @@ interface Profile {
   height: number
   interests: string[]
   lookingFor: string[]
-  photos: any[]
+  photos: { id: string; url: string; isPrimary: boolean }[]
   completionScore: number
 }
 
@@ -27,6 +29,8 @@ export default function ProfilePage() {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [isEditing, setIsEditing] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [isSaving, setIsSaving] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [editedProfile, setEditedProfile] = useState<Partial<Profile>>({})
 
   useEffect(() => {
@@ -51,6 +55,8 @@ export default function ProfilePage() {
   }
 
   const handleSave = async () => {
+    setIsSaving(true)
+    setError(null)
     try {
       const response = await fetch('/api/profile', {
         method: 'PUT',
@@ -62,16 +68,36 @@ export default function ProfilePage() {
         const updatedProfile = await response.json()
         setProfile(updatedProfile)
         setIsEditing(false)
+      } else {
+        throw new Error('프로필 저장에 실패했습니다')
       }
     } catch (error) {
       console.error('프로필 저장 실패:', error)
+      setError(error instanceof Error ? error.message : '알 수 없는 오류')
+    } finally {
+      setIsSaving(false)
     }
   }
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 py-8">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8">
+              <div className="h-10 w-48 bg-gray-200 rounded-lg animate-pulse" />
+            </div>
+            <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+              <div className="lg:col-span-1">
+                <ProfileCardSkeleton />
+              </div>
+              <div className="lg:col-span-2 space-y-6">
+                <ProfileCardSkeleton />
+                <ProfileCardSkeleton />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -81,11 +107,21 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 py-6 sm:py-8">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8 flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-gray-900">내 프로필</h1>
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3"
+            >
+              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+              <p className="text-red-800">{error}</p>
+            </motion.div>
+          )}
+          <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">내 프로필</h1>
             <div className="flex gap-3">
               {isEditing ? (
                 <>
@@ -94,47 +130,70 @@ export default function ProfilePage() {
                     onClick={() => {
                       setEditedProfile(profile)
                       setIsEditing(false)
+                      setError(null)
                     }}
+                    disabled={isSaving}
+                    className="text-sm sm:text-base"
                   >
-                    <X className="w-4 h-4 mr-2" />
+                    <X className="w-4 h-4 mr-1 sm:mr-2" />
                     취소
                   </Button>
-                  <Button variant="primary" onClick={handleSave}>
-                    <Check className="w-4 h-4 mr-2" />
-                    저장
+                  <Button 
+                    variant="primary" 
+                    onClick={handleSave}
+                    disabled={isSaving}
+                    className="text-sm sm:text-base"
+                  >
+                    {isSaving ? (
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                    ) : (
+                      <Check className="w-4 h-4 mr-1 sm:mr-2" />
+                    )}
+                    {isSaving ? '저장 중...' : '저장'}
                   </Button>
                 </>
               ) : (
-                <Button variant="primary" onClick={() => setIsEditing(true)}>
-                  <Edit2 className="w-4 h-4 mr-2" />
+                <Button 
+                  variant="primary" 
+                  onClick={() => setIsEditing(true)}
+                  className="text-sm sm:text-base"
+                >
+                  <Edit2 className="w-4 h-4 mr-1 sm:mr-2" />
                   프로필 수정
                 </Button>
               )}
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
             <div className="lg:col-span-1">
-              <Card className="p-6">
-                <div className="relative mb-6">
-                  <div className="w-full aspect-square rounded-xl bg-gray-200 overflow-hidden">
-                    {profile.photos?.[0]?.url ? (
-                      <img
-                        src={profile.photos[0].url}
-                        alt="Profile"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <Camera className="w-12 h-12 text-gray-400" />
+              <Card className="p-4 sm:p-6" variant="glass">
+                <div className="relative mb-4 sm:mb-6">
+                  <OptimizedImage
+                    src={profile.photos?.[0]?.url}
+                    alt={`${profile.gender === 'MALE' ? '남성' : profile.gender === 'FEMALE' ? '여성' : '기타'} 프로필 사진`}
+                    aspectRatio="1/1"
+                    className="rounded-xl"
+                    fallback={
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100">
+                        <User className="w-16 h-16 sm:w-20 sm:h-20 text-purple-300" />
                       </div>
+                    }
+                  />
+                  <AnimatePresence>
+                    {isEditing && (
+                      <motion.button
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="absolute bottom-2 right-2 p-3 bg-white rounded-full shadow-lg"
+                      >
+                        <Camera className="w-5 h-5 text-gray-600" />
+                      </motion.button>
                     )}
-                  </div>
-                  {isEditing && (
-                    <button className="absolute bottom-2 right-2 p-2 bg-white rounded-full shadow-lg hover:shadow-xl transition-shadow">
-                      <Camera className="w-5 h-5 text-gray-600" />
-                    </button>
-                  )}
+                  </AnimatePresence>
                 </div>
 
                 <div className="space-y-4">
@@ -154,19 +213,31 @@ export default function ProfilePage() {
                   </div>
 
                   <div className="pt-4 border-t">
-                    <h3 className="text-sm font-medium text-gray-500 mb-3">빠른 통계</h3>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">프로필 조회</span>
-                        <span className="text-sm font-medium">248회</span>
+                    <h3 className="text-sm font-medium text-gray-500 mb-3">
+                      <TrendingUp className="inline w-4 h-4 mr-1" />
+                      빠른 통계
+                    </h3>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 flex items-center gap-1">
+                          <Star className="w-3 h-3" />
+                          프로필 조회
+                        </span>
+                        <span className="text-sm font-bold text-purple-600">248회</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">받은 좋아요</span>
-                        <span className="text-sm font-medium">34개</span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 flex items-center gap-1">
+                          <Heart className="w-3 h-3" />
+                          받은 좋아요
+                        </span>
+                        <span className="text-sm font-bold text-pink-600">34개</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">매칭률</span>
-                        <span className="text-sm font-medium">87%</span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 flex items-center gap-1">
+                          <Shield className="w-3 h-3" />
+                          매칭률
+                        </span>
+                        <span className="text-sm font-bold text-green-600">87%</span>
                       </div>
                     </div>
                   </div>
@@ -174,10 +245,10 @@ export default function ProfilePage() {
               </Card>
             </div>
 
-            <div className="lg:col-span-2 space-y-6">
-              <Card className="p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">기본 정보</h2>
-                <div className="grid md:grid-cols-2 gap-6">
+            <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+              <Card className="p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">기본 정보</h2>
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       나이
@@ -284,8 +355,8 @@ export default function ProfilePage() {
                 </div>
               </Card>
 
-              <Card className="p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">자기소개</h2>
+              <Card className="p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">자기소개</h2>
                 {isEditing ? (
                   <textarea
                     value={editedProfile.bio}
@@ -301,8 +372,8 @@ export default function ProfilePage() {
                 )}
               </Card>
 
-              <Card className="p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
+              <Card className="p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
                   <Heart className="inline w-5 h-5 mr-2 text-pink-500" />
                   관심사
                 </h2>
