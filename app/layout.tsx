@@ -1,5 +1,6 @@
 import "./globals.css";
 import { defaultMetadata } from "./metadata";
+import { ThemeProvider } from '@/lib/contexts/ThemeContext';
 
 export const metadata = defaultMetadata;
 
@@ -11,7 +12,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="antialiased">
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
