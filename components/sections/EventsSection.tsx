@@ -52,7 +52,7 @@ export default function EventsSection() {
   return (
     <section className="py-32 min-h-screen relative mb-32">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-50 via-white to-pink-50" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-50 via-white to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
       <div className="absolute inset-0 bg-pattern-dots opacity-5" />
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
@@ -63,10 +63,10 @@ export default function EventsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
             독점 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">엘리트 이벤트</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             검증된 회원들과 함께하는 프리미엄 소셜 이벤트
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ export default function EventsSection() {
                   {/* Event details */}
                   <div className="flex-1 p-8">
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                      <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                         {event.title}
                       </h3>
                       <span className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium">
@@ -105,19 +105,19 @@ export default function EventsSection() {
                     </div>
 
                     <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                         <Calendar className="w-4 h-4" />
                         <span>{event.date}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                         <Clock className="w-4 h-4" />
                         <span>{event.time}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                         <MapPin className="w-4 h-4" />
                         <span>{event.location}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                         <Users className="w-4 h-4" />
                         <span>{event.attendees}/{event.maxAttendees} 참가 중</span>
                       </div>
@@ -133,8 +133,8 @@ export default function EventsSection() {
                           />
                         ))}
                         {event.attendees > 4 && (
-                          <div className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center">
-                            <span className="text-xs text-gray-600">
+                          <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 border-2 border-white dark:border-gray-800 flex items-center justify-center">
+                            <span className="text-xs text-gray-600 dark:text-gray-300">
                               +{event.attendees - 4}
                             </span>
                           </div>
@@ -165,10 +165,10 @@ export default function EventsSection() {
           className="text-center"
         >
           <Card className="max-w-2xl mx-auto p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
               나만의 엘리트 이벤트 개최
             </h3>
-            <p className="text-gray-600 mb-8 mt-2">
+            <p className="text-gray-600 dark:text-gray-300 mb-8 mt-2">
               플래티넘과 다이아몬드 회원은 프라이빗 이벤트를 만들고 선택한 매칭 상대를 초대할 수 있습니다. 
               저희 컨시어지 팀이 완벽한 경험을 계획하도록 도와드립니다.
             </p>

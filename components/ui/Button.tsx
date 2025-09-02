@@ -27,17 +27,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         "focus:ring-purple-500"
       ),
       secondary: cn(
-        "bg-white text-gray-900 border border-gray-200 shadow-sm",
-        "hover:bg-gray-50 hover:border-gray-300 hover:shadow-md hover:-translate-y-0.5",
+        "bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 shadow-sm",
+        "hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md hover:-translate-y-0.5",
         "focus:ring-gray-400"
       ),
       outline: cn(
-        "border-2 border-pink-500 text-pink-600 bg-transparent",
-        "hover:bg-pink-50 hover:border-pink-600",
+        "border-2 border-pink-500 text-pink-600 dark:text-pink-400 bg-transparent",
+        "hover:bg-pink-50 dark:hover:bg-pink-900/10 hover:border-pink-600 dark:hover:border-pink-400",
         "focus:ring-pink-500"
       ),
       ghost: cn(
-        "text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+        "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800",
         "focus:ring-gray-400"
       ),
       danger: cn(

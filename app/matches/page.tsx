@@ -99,7 +99,7 @@ export default function MatchesPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="text-center">
           <div className="relative w-20 h-20 mx-auto mb-4">
             <div className="absolute inset-0 rounded-full border-4 border-purple-200"></div>
@@ -113,7 +113,7 @@ export default function MatchesPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="text-center max-w-md">
           <AlertCircle className="w-16 h-16 text-red-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">오류가 발생했습니다</h2>
@@ -133,7 +133,7 @@ export default function MatchesPage() {
 
   if (currentIndex >= recommendations.length) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
         <div className="text-center">
           <Heart className="w-20 h-20 text-gray-300 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -153,7 +153,7 @@ export default function MatchesPage() {
   const current = recommendations[currentIndex]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-md mx-auto">
           <div className="mb-4 sm:mb-6 text-center">

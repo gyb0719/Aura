@@ -43,23 +43,25 @@ export default function SignUpPage() {
     setIsLoading(true)
     setError(null)
     
+    // 포트폴리오 데모용 회원가입
     try {
-      const supabase = createClient()
-      const { error: signUpError } = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          data: {
-            name: data.name
-          }
-        }
-      })
-      
-      if (signUpError) {
-        setError(signUpError.message)
-      } else {
-        router.push('/auth/verify-email')
+      // 기본 유효성 검사
+      if (!data.email || !data.password || !data.name) {
+        setError('모든 필드를 입력해주세요')
+        return
       }
+      
+      if (!data.terms) {
+        setError('이용약관에 동의해주세요')
+        return
+      }
+      
+      // 2초 딜레이로 실제 회원가입 느낌 연출
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      // 성공적으로 대시보드로 이동
+      alert('포트폴리오 데모: 회원가입 성공! 대시보드로 이동합니다.')
+      router.push('/dashboard')
     } catch (err) {
       setError('회원가입 중 오류가 발생했습니다')
     } finally {
@@ -68,7 +70,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -77,13 +79,13 @@ export default function SignUpPage() {
       >
         <Card className="p-8">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-pink-100 to-purple-100 mb-4">
-              <Heart className="w-8 h-8 text-purple-600" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20 mb-4">
+              <Heart className="w-8 h-8 text-purple-600 dark:text-purple-400" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
               AURA와 함께 시작하세요
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               검증된 프리미엄 회원들과 만나보세요
             </p>
           </div>
@@ -96,14 +98,14 @@ export default function SignUpPage() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-900 dark:text-white text-gray-700 dark:text-gray-300 mb-2">
                 이름
               </label>
               <input
                 id="name"
                 type="text"
                 {...register('name')}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="홍길동"
                 disabled={isLoading}
               />
@@ -113,14 +115,14 @@ export default function SignUpPage() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-900 dark:text-white text-gray-700 dark:text-gray-300 mb-2">
                 이메일
               </label>
               <input
                 id="email"
                 type="email"
                 {...register('email')}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="your@email.com"
                 disabled={isLoading}
               />
@@ -130,7 +132,7 @@ export default function SignUpPage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-900 dark:text-white text-gray-700 dark:text-gray-300 mb-2">
                 비밀번호
               </label>
               <div className="relative">
@@ -140,14 +142,14 @@ export default function SignUpPage() {
                   {...register('password', {
                     onChange: (e) => setPassword(e.target.value)
                   })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-12"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-12"
                   placeholder="••••••••"
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-300"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -177,7 +179,7 @@ export default function SignUpPage() {
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-900 dark:text-white text-gray-700 dark:text-gray-300 mb-2">
                 비밀번호 확인
               </label>
               <div className="relative">
@@ -185,14 +187,14 @@ export default function SignUpPage() {
                   id="confirmPassword"
                   type={showConfirmPassword ? 'text' : 'password'}
                   {...register('confirmPassword')}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-12"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-12"
                   placeholder="••••••••"
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-300"
                 >
                   {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -209,7 +211,7 @@ export default function SignUpPage() {
                   {...register('terms')}
                   className="mt-1 rounded text-primary focus:ring-primary"
                 />
-                <span className="ml-2 text-sm text-gray-600">
+                <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">
                   <Link href="/terms" className="text-primary hover:underline">이용약관</Link> 및{' '}
                   <Link href="/privacy" className="text-primary hover:underline">개인정보처리방침</Link>에
                   동의합니다
@@ -233,26 +235,36 @@ export default function SignUpPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">또는</span>
+                <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">또는</span>
               </div>
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
-              <button className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                <img src="/google.svg" alt="Google" className="w-5 h-5 mr-2" />
-                <span className="text-sm font-medium">Google</span>
+              <button 
+                onClick={() => {
+                  alert('포트폴리오 데모: Google 로그인 기능 (실제로는 OAuth 연동 필요)')
+                }}
+                className="flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                <div className="w-5 h-5 mr-2 bg-gradient-to-br from-blue-500 to-red-500 rounded" />
+                <span className="text-sm font-medium text-gray-900 dark:text-white">Google</span>
               </button>
-              <button className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                <img src="/kakao.svg" alt="Kakao" className="w-5 h-5 mr-2" />
-                <span className="text-sm font-medium">Kakao</span>
+              <button 
+                onClick={() => {
+                  alert('포트폴리오 데모: 카카오 로그인 기능 (실제로는 Kakao SDK 연동 필요)')
+                }}
+                className="flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                <div className="w-5 h-5 mr-2 bg-yellow-400 rounded" />
+                <span className="text-sm font-medium text-gray-900 dark:text-white">Kakao</span>
               </button>
             </div>
           </div>
 
-          <p className="mt-8 text-center text-sm text-gray-600">
+          <p className="mt-8 text-center text-sm text-gray-600 dark:text-gray-300">
             이미 계정이 있으신가요?{' '}
             <Link href="/auth/signin" className="text-primary font-medium hover:underline">
               로그인

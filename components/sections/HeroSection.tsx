@@ -27,7 +27,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
       <div className="absolute inset-0 gradient-mesh opacity-30" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32 relative z-10">
         <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center">
@@ -38,7 +38,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 lg:mb-12 tracking-tight text-center w-full"
           >
-            <span className="text-gray-900 block sm:inline">당신의 완벽한</span>
+            <span className="text-gray-900 dark:text-white block sm:inline">당신의 완벽한</span>
             <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent block sm:inline">
               인연을 만나세요

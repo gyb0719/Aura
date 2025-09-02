@@ -53,7 +53,7 @@ export default function AIShowcaseSection() {
   return (
     <section id="technology" className="py-32 min-h-screen relative mb-32">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-purple-50 via-pink-50 to-white" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-50 via-pink-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
       <div className="absolute inset-0 bg-pattern-grid opacity-5" />
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
@@ -64,15 +64,15 @@ export default function AIShowcaseSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 mb-8 shadow-md">
-            <Sparkles className="w-5 h-5 text-purple-600" />
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20 mb-8 shadow-md">
+            <Sparkles className="w-5 h-5 text-purple-600 dark:text-purple-400" />
             <span className="text-base bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent font-medium">AI 기반 매칭</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
             과학적인 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">완벽한 매칭</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             수천 개의 데이터 포인트를 분석해 당신의 이상형을 찾아드립니다
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export default function AIShowcaseSection() {
             transition={{ duration: 0.6 }}
           >
             <Card className="p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 AI 호환성 테스트
               </h3>
               
@@ -96,11 +96,11 @@ export default function AIShowcaseSection() {
                   <div className="text-6xl font-bold text-primary mb-2">
                     {compatibility}%
                   </div>
-                  <div className="text-sm text-gray-600">호환성 점수</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">호환성 점수</div>
                 </div>
                 
                 {/* Progress bar */}
-                <div className="mt-6 bg-gray-200 rounded-full h-3 overflow-hidden">
+                <div className="mt-6 bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
                   <motion.div
                     className="h-full bg-gradient-to-r from-primary to-primary-dark rounded-full"
                     initial={{ width: 0 }}
@@ -120,16 +120,16 @@ export default function AIShowcaseSection() {
               </Button>
 
               <div className="mt-6 space-y-3">
-                <div className="flex items-center justify-between py-2 border-b border-gray-200">
-                  <span className="text-sm text-gray-600">성격 매칭</span>
+                <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-sm text-gray-600 dark:text-gray-300">성격 매칭</span>
                   <span className="text-sm font-semibold text-primary">94%</span>
                 </div>
-                <div className="flex items-center justify-between py-2 border-b border-gray-200">
-                  <span className="text-sm text-gray-600">라이프스타일</span>
+                <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-sm text-gray-600 dark:text-gray-300">라이프스타일</span>
                   <span className="text-sm font-semibold text-primary">88%</span>
                 </div>
-                <div className="flex items-center justify-between py-2 border-b border-gray-200">
-                  <span className="text-sm text-gray-600">장기적 가능성</span>
+                <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                  <span className="text-sm text-gray-600 dark:text-gray-300">장기적 가능성</span>
                   <span className="text-sm font-semibold text-primary">91%</span>
                 </div>
               </div>
@@ -154,13 +154,13 @@ export default function AIShowcaseSection() {
               >
                 <Card className="text-center p-8">
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center mb-5 shadow-md">
-                      <feature.icon className="w-8 h-8 text-purple-600" />
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20 flex items-center justify-center mb-5 shadow-md">
+                      <feature.icon className="w-8 h-8 text-purple-600 dark:text-purple-400" />
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-3 text-lg">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3 text-lg">
                       {feature.title}
                     </h4>
-                    <p className="text-sm text-gray-600 leading-relaxed mt-2">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mt-2">
                       {feature.description}
                     </p>
                   </div>

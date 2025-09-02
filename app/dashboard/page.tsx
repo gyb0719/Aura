@@ -114,7 +114,7 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
           <div className="mb-8">
             <div className="h-10 w-64 bg-gray-200 rounded-lg animate-pulse mb-2" />
@@ -141,7 +141,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* 헤더 */}
         <motion.div 

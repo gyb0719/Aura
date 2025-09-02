@@ -42,7 +42,7 @@ export default function SuccessSection() {
   return (
     <section id="success" className="py-32 min-h-screen relative mb-32">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-bl from-white via-pink-50 to-purple-50" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-white via-pink-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
         <motion.div
@@ -52,10 +52,10 @@ export default function SuccessSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
             실제 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">성공 스토리</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             완벽한 인연을 찾은 수천 명의 회원들과 함께하세요
           </p>
         </motion.div>
@@ -75,7 +75,7 @@ export default function SuccessSection() {
                 <div className="text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-2">
                   {stat.number}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-600 dark:text-gray-300">
                   {stat.label}
                 </div>
               </Card>
@@ -109,16 +109,16 @@ export default function SuccessSection() {
                 </div>
 
                 {/* Story */}
-                <p className="text-gray-600 mb-4 italic">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 italic">
                   &ldquo;{testimonial.story}&rdquo;
                 </p>
 
                 {/* Profile info */}
-                <div className="border-t border-gray-200 pt-4">
-                  <div className="font-semibold text-gray-900 mb-2">
+                <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+                  <div className="font-semibold text-gray-900 dark:text-white mb-2">
                     {testimonial.name} ({testimonial.age}세)
                   </div>
-                  <div className="text-sm text-gray-600 mb-3">
+                  <div className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                     {testimonial.role}
                   </div>
                   <div className="text-xs text-primary">
@@ -140,22 +140,22 @@ export default function SuccessSection() {
         >
           <Card className="max-w-2xl mx-auto p-8">
             <Heart className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
               성공 보장 프로그램
             </h3>
-            <p className="text-gray-600 mb-8 mt-2">
+            <p className="text-gray-600 dark:text-gray-300 mb-8 mt-2">
               6개월 내에 의미 있는 인연을 찾지 못하신다면, 
               무료로 멤버십을 연장해 드립니다. 저희 플랫폼에 대한 자신감입니다.
             </p>
             <div className="flex justify-center gap-8">
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">6개월</div>
-                <div className="text-sm text-gray-600">평균 매칭 기간</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">평균 매칭 기간</div>
               </div>
-              <div className="w-px bg-gray-200" />
+              <div className="w-px bg-gray-200 dark:bg-gray-700" />
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">100%</div>
-                <div className="text-sm text-gray-600">만족도</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">만족도</div>
               </div>
             </div>
           </Card>

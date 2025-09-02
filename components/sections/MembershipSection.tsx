@@ -80,7 +80,7 @@ export default function MembershipSection() {
   return (
     <section id="membership" className="py-32 min-h-screen relative mb-32">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-pink-50 via-white to-purple-50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Section header */}
         <motion.div
@@ -90,10 +90,10 @@ export default function MembershipSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
             당신에게 맞는 <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">멤버십 선택</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             검증된 엘리트 싱글들의 커뮤니티에 참여하세요
           </p>
         </motion.div>
@@ -127,22 +127,22 @@ export default function MembershipSection() {
                 <div className="p-8">
                   {/* Tier icon and name */}
                   <div className="flex items-center justify-center mb-6">
-                    <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center shadow-lg`}>
-                      <tier.icon className="w-10 h-10 text-purple-600" />
+                    <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20 flex items-center justify-center shadow-lg`}>
+                      <tier.icon className="w-10 h-10 text-purple-600 dark:text-purple-400" />
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-center text-gray-900 mb-4">
+                  <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">
                     {tier.name}
                   </h3>
 
                   {/* Pricing */}
                   <div className="text-center mb-6">
-                    <div className="text-3xl font-bold text-gray-900">
+                    <div className="text-3xl font-bold text-gray-900 dark:text-white">
                       {tier.price}
                     </div>
                     {tier.period && (
-                      <div className="text-sm text-gray-600">/{tier.period}</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-300">/{tier.period}</div>
                     )}
                   </div>
 
@@ -151,7 +151,7 @@ export default function MembershipSection() {
                     {tier.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">{feature}</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -183,28 +183,28 @@ export default function MembershipSection() {
           className="text-center"
         >
           <Card className="max-w-3xl mx-auto p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               모든 멤버십 공통 혜택
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div>
                 <Shield className="w-8 h-8 text-primary mx-auto mb-3" />
-                <h4 className="font-semibold text-gray-900 mb-2">신원 보호</h4>
-                <p className="text-sm text-gray-600 mt-1">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">신원 보호</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                   은행 수준의 암호화와 프라이버시 보호
                 </p>
               </div>
               <div>
                 <Star className="w-8 h-8 text-primary mx-auto mb-3" />
-                <h4 className="font-semibold text-gray-900 mb-2">품질 보장</h4>
-                <p className="text-sm text-gray-600 mt-1">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">품질 보장</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                   100% 검증된 회원 또는 전액 환불
                 </p>
               </div>
               <div>
                 <Crown className="w-8 h-8 text-primary mx-auto mb-3" />
-                <h4 className="font-semibold text-gray-900 mb-2">성공 코칭</h4>
-                <p className="text-sm text-gray-600 mt-1">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">성공 코칭</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                   전문가의 데이팅 조언과 프로필 최적화
                 </p>
               </div>
