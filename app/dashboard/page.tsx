@@ -46,7 +46,8 @@ export default function DashboardPage() {
 
   const fetchDashboardData = async () => {
     try {
-      // 임시 데이터 - 실제로는 API 호출
+      // 포트폴리오용 데모 데이터 사용
+      const { demoStats, demoMatches } = await import('@/lib/data/demoData')
       setTimeout(() => {
         setData({
           user: {
@@ -55,25 +56,21 @@ export default function DashboardPage() {
             membershipTier: 'PREMIUM',
             verified: true
           },
-          stats: {
-            newMatches: 12,
-            profileViews: 248,
-            messages: 34,
-            likeScore: 4.8
-          },
+          stats: demoStats,
           profile: {
-            completionScore: 75,
+            completionScore: 85,
             photos: []
           },
-          recentMatches: [
-            { id: '1', name: '이서연', age: 28, matchedAt: '2시간 전' },
-            { id: '2', name: '박지민', age: 30, matchedAt: '어제' },
-            { id: '3', name: '김하늘', age: 26, matchedAt: '3일 전' }
-          ],
+          recentMatches: demoMatches.slice(0, 3).map(match => ({
+            id: match.id,
+            name: match.user.name,
+            age: match.user.age,
+            matchedAt: match.matchedAt
+          })),
           todayRecommendations: 8
         })
         setIsLoading(false)
-      }, 1000)
+      }, 1200)
     } catch (error) {
       console.error('대시보드 데이터 로드 실패:', error)
       setIsLoading(false)

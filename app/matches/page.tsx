@@ -45,16 +45,15 @@ export default function MatchesPage() {
   const fetchRecommendations = async () => {
     setError(null)
     try {
-      const response = await fetch('/api/recommendations')
-      if (!response.ok) {
-        throw new Error(response.status === 401 ? '로그인이 필요합니다' : '추천을 불러올 수 없습니다')
-      }
-      const data = await response.json()
-      setRecommendations(data)
+      // 포트폴리오용 데모 데이터 사용
+      const { demoUsers } = await import('@/lib/data/demoData')
+      setTimeout(() => {
+        setRecommendations(demoUsers)
+        setIsLoading(false)
+      }, 1500) // 로딩 효과를 위한 지연
     } catch (error) {
       console.error('추천 로드 실패:', error)
-      setError(error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다')
-    } finally {
+      setError('데이터를 불러오는 중 오류가 발생했습니다')
       setIsLoading(false)
     }
   }
