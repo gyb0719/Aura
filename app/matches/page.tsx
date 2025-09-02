@@ -6,6 +6,7 @@ import { Heart, X, MessageCircle, MapPin, Briefcase, Sparkles, User, AlertCircle
 import Image from 'next/image'
 import Card from '@/components/ui/Card'
 import Card3D from '@/components/ui/Card3D'
+import SwipeableCard from '@/components/ui/SwipeableCard'
 import Button from '@/components/ui/Button'
 
 interface Recommendation {
@@ -165,22 +166,10 @@ export default function MatchesPage() {
           </div>
 
           <AnimatePresence mode="wait">
-            <motion.div
+            <SwipeableCard
               key={current.id}
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ 
-                opacity: 1, 
-                scale: 1,
-                y: 0,
-                x: direction === 'left' ? -300 : direction === 'right' ? 300 : 0,
-                rotate: direction === 'left' ? -15 : direction === 'right' ? 15 : 0
-              }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              transition={{ 
-                type: "spring",
-                stiffness: 300,
-                damping: 30
-              }}
+              onSwipeLeft={() => handleAction('pass')}
+              onSwipeRight={() => handleAction('like')}
               className="relative"
             >
               <Card3D className="overflow-hidden" intensity={0.15}>
@@ -315,7 +304,7 @@ export default function MatchesPage() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </SwipeableCard>
           </AnimatePresence>
         </div>
       </div>
