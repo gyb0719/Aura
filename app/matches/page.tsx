@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, X, MessageCircle, MapPin, Briefcase, Sparkles, User, AlertCircle, RefreshCw } from 'lucide-react'
 import Image from 'next/image'
 import Card from '@/components/ui/Card'
+import Card3D from '@/components/ui/Card3D'
 import Button from '@/components/ui/Button'
 
 interface Recommendation {
@@ -182,7 +183,7 @@ export default function MatchesPage() {
               }}
               className="relative"
             >
-              <Card className="overflow-hidden">
+              <Card3D className="overflow-hidden" intensity={0.15}>
                 <div className="relative">
                   <div className="aspect-[3/4] bg-gradient-to-br from-purple-100 to-pink-100 relative overflow-hidden">
                     {current.photos?.[0]?.url && !imageLoadErrors.has(current.user.id) ? (
@@ -296,7 +297,7 @@ export default function MatchesPage() {
                     <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                   </button>
                 </div>
-              </Card>
+              </Card3D>
 
               <div className="mt-4 flex justify-center">
                 <div className="flex gap-1">
