@@ -63,7 +63,7 @@ export default function LoadingHeart({ size = 'md', message }: LoadingHeartProps
       
       {message && (
         <motion.p
-          className={`mt-4 text-gray-600 dark:text-gray-400 ${textSizes[size]} text-center`}
+          className={`mt-4 text-gray-600 ${textSizes[size]} text-center`}
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >

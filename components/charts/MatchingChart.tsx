@@ -37,7 +37,7 @@ const compatibilityData = [
 export function WeeklyActivityChart() {
   return (
     <div className="h-80">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">
         주간 활동 통계
       </h3>
       <ResponsiveContainer width="100%" height="100%">
@@ -92,7 +92,7 @@ export function WeeklyActivityChart() {
 export function CompatibilityDistribution() {
   return (
     <div className="h-80">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">
         매칭 호환성 분포
       </h3>
       <ResponsiveContainer width="100%" height="100%">
@@ -134,7 +134,7 @@ export function SuccessRateChart() {
 
   return (
     <div className="h-80">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">
         월별 매칭 성공률
       </h3>
       <ResponsiveContainer width="100%" height="100%">

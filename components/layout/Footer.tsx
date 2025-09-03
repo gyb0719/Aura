@@ -44,7 +44,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="py-24 bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+    <footer className="py-24 bg-gray-100 border-t border-gray-200">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid md:grid-cols-5 gap-12 mb-16">
           {/* Brand column */}
@@ -54,13 +54,13 @@ export default function Footer() {
                 오라
               </span>
             </Link>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            <p className="text-sm text-gray-600 mb-4">
               AI가 찾아주는 당신의 운명
             </p>
             <div className="space-y-2">
               <a 
                 href="mailto:hello@aura.co.kr" 
-                className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                className="flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
                 onClick={(e) => {
                   e.preventDefault()
                   alert("이메일: hello@aura.co.kr")
@@ -71,7 +71,7 @@ export default function Footer() {
               </a>
               <a 
                 href="tel:02-1234-5678" 
-                className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                className="flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
                 onClick={(e) => {
                   e.preventDefault()
                   alert("전화: 02-1234-5678")
@@ -80,7 +80,7 @@ export default function Footer() {
                 <Phone className="w-4 h-4" />
                 02-1234-5678
               </a>
-              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
                 <MapPin className="w-4 h-4" />
                 서울 | 부산 | 제주
               </div>
@@ -90,14 +90,14 @@ export default function Footer() {
           {/* Links columns */}
           <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">서비스</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">서비스</h4>
               <ul className="space-y-2">
                 {footerLinks.product.map((link) => (
                   <li key={link.label}>
                     <a 
                       href={link.href} 
                       onClick={(e) => handleLinkClick(e, link.href)}
-                      className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                      className="text-sm text-gray-600 hover:text-primary transition-colors"
                     >
                       {link.label}
                     </a>
@@ -107,14 +107,14 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">회사</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">회사</h4>
               <ul className="space-y-2">
                 {footerLinks.company.map((link) => (
                   <li key={link.label}>
                     <a 
                       href={link.href} 
                       onClick={(e) => handleLinkClick(e, link.href)}
-                      className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                      className="text-sm text-gray-600 hover:text-primary transition-colors"
                     >
                       {link.label}
                     </a>
@@ -124,14 +124,14 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">지원</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">지원</h4>
               <ul className="space-y-2">
                 {footerLinks.support.map((link) => (
                   <li key={link.label}>
                     <a 
                       href={link.href} 
                       onClick={(e) => handleLinkClick(e, link.href)}
-                      className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                      className="text-sm text-gray-600 hover:text-primary transition-colors"
                     >
                       {link.label}
                     </a>
@@ -141,14 +141,14 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">소셜</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">소셜</h4>
               <ul className="space-y-2">
                 {footerLinks.social.map((link) => (
                   <li key={link.label}>
                     <a 
                       href={link.href} 
                       onClick={(e) => handleLinkClick(e, link.href)}
-                      className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                      className="text-sm text-gray-600 hover:text-primary transition-colors"
                     >
                       {link.label}
                     </a>
@@ -160,30 +160,30 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-600 dark:text-gray-300">
+            <p className="text-sm text-gray-600">
               © 2024 오라. 모든 권리 보유.
             </p>
             <div className="flex items-center gap-6">
               <a 
                 href="#privacy" 
                 onClick={(e) => handleLinkClick(e, "#privacy")}
-                className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                className="text-sm text-gray-600 hover:text-primary transition-colors"
               >
                 개인정보처리방침
               </a>
               <a 
                 href="#terms" 
                 onClick={(e) => handleLinkClick(e, "#terms")}
-                className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                className="text-sm text-gray-600 hover:text-primary transition-colors"
               >
                 이용약관
               </a>
               <a 
                 href="#cookies" 
                 onClick={(e) => handleLinkClick(e, "#cookies")}
-                className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+                className="text-sm text-gray-600 hover:text-primary transition-colors"
               >
                 쿠키
               </a>
